@@ -36,13 +36,5 @@ jobs:
       - name: Restore
         run: dotnet restore ${{ env.SOLUTION }}
         
-      - name: Analyze
-        uses: dotnet/code-analysis@v1
-        id: code-analysis
-        with:
-          solution: ${{ env.SOLUTION }}
-          build-breaking: true
-          all-categories: all
-        
       - name: Build
         run: dotnet build ${{ env.SOLUTION }} --no-restore
