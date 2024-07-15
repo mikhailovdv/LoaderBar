@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         
-      - name: .NET version sweeper
+      - name: Version Sweeper
         id: dotnet-version-sweeper
         uses: dotnet/versionsweeper@main
         env:
@@ -28,13 +28,21 @@ jobs:
           name: ${{ github.repository }}
           branch: ${{ github.ref }}
           
-      - name: Setup .NET Core
+      - name: Setup
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.x.x
           
       - name: Restore
         run: dotnet restore ${{ env.SOLUTION }}
+        
+      - name: Analyze
+        uses: dotnet/code-analysis@v1
+        id: code-analysis
+        with:
+          solution: ${{ env.SOLUTION }}
+          build-breaking: true
+          all-categories: all
         
       - name: Build
         run: dotnet build ${{ env.SOLUTION }} --no-restore
