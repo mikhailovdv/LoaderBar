@@ -1,0 +1,32 @@
+﻿name: CodeQL Analysis
+
+on:
+  workflow_dispatch:
+    inputs:      
+      codeql-analysis: 
+        description: 'Run CodeQL Analysis'
+        required: true
+        default: 'true'
+
+jobs:
+    analyze:
+        name: CodeQL Analysis
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Code
+              id: checkout_code
+              uses: actions/checkout@v4
+
+            - name: Initialize CodeQL
+              id: init_codeql
+              uses: github/codeql-action/init@v1
+              with:
+                  languages: csharp
+                  queries: security-and-quality
+
+            - name: Autobuild
+              uses: github/codeql-action/autobuild@v1
+
+            - name: Perform CodeQL Analysis
+              id: analyze_codeql
+              uses: github/codeql-action/analyze@v1
