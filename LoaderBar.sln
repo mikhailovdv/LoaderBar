@@ -14,6 +14,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02C0FC3C-ECC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoaderBar", "src\LoaderBar\LoaderBar.csproj", "{C416BBA4-413C-4AE9-8684-FCFEB3DF6F86}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{BF8630D5-6530-4FDB-8D69-0EED41AE7501}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoaderBar.Tests", "tests\LoaderBar.Tests\LoaderBar.Tests.csproj", "{36565EA0-0770-4118-9D00-17BEE87222A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,11 +29,16 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{ABD783C0-FE3E-44A6-BE74-E6050CA598AF} = {9F062A8F-45F3-490E-A298-299F08D07914}
 		{C416BBA4-413C-4AE9-8684-FCFEB3DF6F86} = {02C0FC3C-ECCE-429E-8E12-C713F9BEE3FD}
+		{36565EA0-0770-4118-9D00-17BEE87222A7} = {BF8630D5-6530-4FDB-8D69-0EED41AE7501}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{C416BBA4-413C-4AE9-8684-FCFEB3DF6F86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C416BBA4-413C-4AE9-8684-FCFEB3DF6F86}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C416BBA4-413C-4AE9-8684-FCFEB3DF6F86}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C416BBA4-413C-4AE9-8684-FCFEB3DF6F86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36565EA0-0770-4118-9D00-17BEE87222A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36565EA0-0770-4118-9D00-17BEE87222A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36565EA0-0770-4118-9D00-17BEE87222A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36565EA0-0770-4118-9D00-17BEE87222A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
