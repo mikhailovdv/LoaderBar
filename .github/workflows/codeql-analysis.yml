@@ -31,17 +31,10 @@ jobs:
 
             - name: Autobuild
               id: autobuild_codeql
-              uses: github/codeql-action/autobuild@v2
+              uses: github/codeql-action/autobuild@v3
 
             - name: Perform CodeQL Analysis
               id: analyze_codeql
               uses: github/codeql-action/analyze@v2                  
               with:
                 category: '/language:csharp/type:library'
-                output: ${{ github.workspace }}/results
-
-            - name: Upload CodeQL results
-              id: upload_codeql_results
-              uses: github/codeql-action/upload-sarif@v2
-              with:
-                sarif_file: ${{ github.workspace }}/results/csharp.sarif
