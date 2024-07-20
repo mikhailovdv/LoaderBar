@@ -3,13 +3,14 @@
 public class StickLoader : ILoader
 {
     private const byte IndexOffset = 1;
-    private readonly char[] _loaderCharacters
-        = ['|', '/', '-', '\\'];
     private int _currentIndex;
+    
+    public char[] LoaderCharacters
+        => ['|', '/', '-', '\\'];
 
     public char GetTickChar()
     {
-        var character = _loaderCharacters[_currentIndex];
+        var character = LoaderCharacters[_currentIndex];
         SetNextIndex(CalculateNextIndex());
         return character;
     }
@@ -19,7 +20,7 @@ public class StickLoader : ILoader
     
     
     private int CalculateNextIndex()
-        => IncrementIndex() % _loaderCharacters.Length;
+        => IncrementIndex() % LoaderCharacters.Length;
         
     private void SetNextIndex(int newIndex)
         => _currentIndex = newIndex;
