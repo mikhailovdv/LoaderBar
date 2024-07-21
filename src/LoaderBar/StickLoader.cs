@@ -8,8 +8,8 @@ public class StickLoader : ILoader
     private const byte IndexOffset = 1;
     private int _currentIndex;
     
-    internal static char[] LoaderCharacters
-        => ['|', '/', '-', '\\'];
+    internal static readonly char[] LoaderCharacters
+        = ['|', '/', '-', '\\'];
 
     public char GetTickChar()
     {
