@@ -1,11 +1,14 @@
-﻿namespace LoaderBar;
+﻿using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo(assemblyName: "LoaderBar.Tests")]
+namespace LoaderBar;
 
 public class StickLoader : ILoader
 {
     private const byte IndexOffset = 1;
     private int _currentIndex;
     
-    public char[] LoaderCharacters
+    internal static char[] LoaderCharacters
         => ['|', '/', '-', '\\'];
 
     public char GetTickChar()
