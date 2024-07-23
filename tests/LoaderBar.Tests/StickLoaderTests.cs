@@ -32,7 +32,8 @@ public class StickLoaderTests
         // Act
         char actual = default;
         for (var i = 0; i < ticksCount; i++) {
-            actual = _loader.GetTickChar();
+            var a = _loader.GetTickChar();
+            actual = a;
         }
         
         // Assert
@@ -50,7 +51,8 @@ public class StickLoaderTests
         // Act
         char actual = default;
         for (var i = 0; i < ticksCount; i++) {
-            actual = _loader.GetTickChar();
+            var a = _loader.GetTickChar();
+            actual = a;
         }
         
         // Assert

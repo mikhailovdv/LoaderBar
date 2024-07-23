@@ -1,39 +1,29 @@
 ﻿using System.Runtime.CompilerServices;
+using System.Threading;
 
 [assembly: InternalsVisibleTo(assemblyName: "LoaderBar.Tests")]
 namespace LoaderBar;
 
 public class StickLoader : ILoader
 {
-    private const byte IndexOffset = 1;
-    private int _currentIndex;
-    
     internal static readonly char[] LoaderCharacters
         = ['|', '/', '-', '\\'];
+    private Tick _tick
+        = new(maxAllowedIndex: LoaderCharacters.Length,
+             previousIndex: 0,
+             currentIndex: 0,
+             totalTicks: 0);
 
-    public int CurrentTick { get; private set; }
+    public int CurrentTick => _tick.TotalTicks;
 
     public char GetTickChar()
-    {
-        var character = LoaderCharacters[_currentIndex];
-        SetNextIndex(CalculateNextIndex());
-        IncrementTick();
-        return character;
-    }
+        => LoaderCharacters[Interlocked.Exchange(ref _tick, _tick.Next()).Index];
 
     public void Reset()
     {
-        SetNextIndex(default);
-        CurrentTick = default;
+        _tick = new Tick(maxAllowedIndex: LoaderCharacters.Length,
+            previousIndex: 0,
+            currentIndex: 0,
+            totalTicks: 0);
     }
-
-
-    private int CalculateNextIndex()
-        => (_currentIndex + IndexOffset) % LoaderCharacters.Length;
-        
-    private void SetNextIndex(int newIndex)
-        => _currentIndex = newIndex;
-    
-    private void IncrementTick()
-        => CurrentTick++;
 }
