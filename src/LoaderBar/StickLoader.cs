@@ -11,23 +11,29 @@ public class StickLoader : ILoader
     internal static readonly char[] LoaderCharacters
         = ['|', '/', '-', '\\'];
 
+    public int CurrentTick { get; private set; }
+
     public char GetTickChar()
     {
         var character = LoaderCharacters[_currentIndex];
         SetNextIndex(CalculateNextIndex());
+        IncrementTick();
         return character;
     }
-    
+
     public void Reset()
-        => SetNextIndex(default);
-    
-    
+    {
+        SetNextIndex(default);
+        CurrentTick = default;
+    }
+
+
     private int CalculateNextIndex()
-        => IncrementIndex() % LoaderCharacters.Length;
+        => (_currentIndex + IndexOffset) % LoaderCharacters.Length;
         
     private void SetNextIndex(int newIndex)
         => _currentIndex = newIndex;
-
-    private int IncrementIndex()
-        => _currentIndex + IndexOffset;
+    
+    private void IncrementTick()
+        => CurrentTick++;
 }

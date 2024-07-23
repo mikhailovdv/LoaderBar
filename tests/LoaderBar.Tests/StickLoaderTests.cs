@@ -9,12 +9,17 @@ public class StickLoaderTests
     {
         // Arrange
         var expected = StickLoader.LoaderCharacters[0];
+        const int ticksCount = 1;
         
         // Act
-        var actual = _loader.GetTickChar();
+        char actual = default;
+        for (var i = 0; i < ticksCount; i++) {
+            actual = _loader.GetTickChar();
+        }
         
         // Assert
         Assert.Equal(expected, actual);
+        Assert.Equal(ticksCount, _loader.CurrentTick);
     }
     
     [Fact]
@@ -22,15 +27,17 @@ public class StickLoaderTests
     {
         // Arrange
         var expected = StickLoader.LoaderCharacters[^1];
+        var ticksCount = StickLoader.LoaderCharacters.Length;
         
         // Act
-        for (var i = 0; i < StickLoader.LoaderCharacters.Length - 1; i++) {
-            _loader.GetTickChar();
+        char actual = default;
+        for (var i = 0; i < ticksCount; i++) {
+            actual = _loader.GetTickChar();
         }
-        var actual = _loader.GetTickChar();
         
         // Assert
         Assert.Equal(expected, actual);
+        Assert.Equal(StickLoader.LoaderCharacters.Length, _loader.CurrentTick);
     }
     
     [Fact]
@@ -38,15 +45,17 @@ public class StickLoaderTests
     {
         // Arrange
         var expected = StickLoader.LoaderCharacters[0];
+        var ticksCount = StickLoader.LoaderCharacters.Length + 1;
         
         // Act
-        for (var i = 0; i < StickLoader.LoaderCharacters.Length; i++) {
-            _loader.GetTickChar();
+        char actual = default;
+        for (var i = 0; i < ticksCount; i++) {
+            actual = _loader.GetTickChar();
         }
-        var actual = _loader.GetTickChar();
         
         // Assert
         Assert.Equal(expected, actual);
+        Assert.Equal(ticksCount, _loader.CurrentTick);
     }
     
     [Fact]
@@ -54,6 +63,7 @@ public class StickLoaderTests
     {
         // Arrange
         var expected = StickLoader.LoaderCharacters[0];
+        const int ticksCount = 1;
         
         // Act
         for (var i = 0; i < new Random().Next(minValue: 1, maxValue: int.MaxValue); i++) {
@@ -64,6 +74,7 @@ public class StickLoaderTests
         
         // Assert
         Assert.Equal(expected, actual);
+        Assert.Equal(ticksCount, _loader.CurrentTick);
     }
     
     [Fact]
@@ -71,6 +82,7 @@ public class StickLoaderTests
     {
         // Arrange
         var expected = StickLoader.LoaderCharacters[0];
+        const int ticksCount = 1;
         
         // Act
         for (var i = 0; i < new Random().Next(minValue: 1, maxValue: int.MaxValue); i++) {
@@ -83,5 +95,6 @@ public class StickLoaderTests
         
         // Assert
         Assert.Equal(expected, actual);
+        Assert.Equal(ticksCount, _loader.CurrentTick);
     }
 }
